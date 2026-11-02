@@ -182,7 +182,7 @@ export async function 글만들기(옵션 = {}) {
   if (!옵션.작업폴더) throw new Error("작업폴더 가 필요합니다");
   return 잠금으로({작업폴더: 옵션.작업폴더, 이름: "네이버-글", 일: () => 글만들기본체(옵션)});
 }
-async function 글만들기본체({작업폴더, 키워드 = "", 벤치마크URL = "", 사진수 = 3} = {}) {
+async function 글만들기본체({작업폴더, 키워드 = "", 벤치마크URL = "", 사진수 = 2} = {}) {
   const 설정 = await 설정읽기(작업폴더);
   if (!String(설정.openai키 || "").startsWith("sk-")) return {결과: "설정 필요", 빠진: ["OpenAI 키"]};
   if (!키워드 && !벤치마크URL) return {결과: "키워드 필요"};
